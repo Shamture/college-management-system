@@ -1,13 +1,15 @@
 package de.scalese.springboot.collegemanagementsystem.dao;
 
-import de.scalese.springboot.collegemanagementsystem.entity.Student;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import java.util.List;
+import de.scalese.springboot.collegemanagementsystem.entity.Student;
 
 @Repository
 public class StudentDaoImp implements StudentDao {
@@ -23,8 +25,21 @@ public class StudentDaoImp implements StudentDao {
 
         Query<Student> query = session.createQuery("from Student", Student.class);
 
-        List students = query.getResultList();
+        List<Student> students = query.getResultList();
 
         return students;
     }
+
+	@Override
+	public Student findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Student save(Student student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

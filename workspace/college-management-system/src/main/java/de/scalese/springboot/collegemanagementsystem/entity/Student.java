@@ -9,16 +9,16 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    private int id;
 
     @Column(name = "first_name")
-    int firstName;
+    private int firstName;
 
     @Column(name = "last_name")
-    int lastName;
+    private int lastName;
 
     @Column(name = "email")
-    int email;
+    private int email;
 
     public Student(int firstName, int lastName, int email) {
         this.firstName = firstName;

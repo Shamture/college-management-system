@@ -12,25 +12,33 @@ import de.scalese.springboot.collegemanagementsystem.entity.Student;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
-    private StudentDao studentDao;
-
-    @Override
-    @Transactional
-    public List<Student> findAll() {
-    	
-        return studentDao.findAll();
-    }
+	@Autowired
+	private StudentDao studentDao;
 
 	@Override
+	@Transactional
+	public List<Student> findAll() {
+
+		return studentDao.findAll();
+	}
+
+	@Override
+	@Transactional
 	public Student findById(int id) {
-		
+
 		return studentDao.findById(id);
 	}
 
 	@Override
-	public Student save(Student student) {
-		
-		return studentDao.save(student);
+	@Transactional
+	public void save(Student student) {
+
+		studentDao.save(student);
+	}
+
+	@Override
+	@Transactional
+	public void delete(int id) {
+		studentDao.delete(id);
 	}
 }

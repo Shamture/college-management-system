@@ -20,7 +20,6 @@ public class StudentDaoImp implements StudentDao {
     @Override
     public List<Student> findAll() {
 
-        // get current hibernate session
         Session session = entityManager.unwrap(Session.class);
 
         Query<Student> query = session.createQuery("from Student", Student.class);
@@ -30,16 +29,29 @@ public class StudentDaoImp implements StudentDao {
         return students;
     }
 
-	@Override
-	public Student findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Student findById(int id) {
 
-	@Override
-	public Student save(Student student) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        Session session = entityManager.unwrap(Session.class);
+
+        Student student = session.get(Student.class, id);
+
+        return student;
+    }
+
+    @Override
+    public void save(Student student) {
+
+        Session session = entityManager.unwrap(Session.class);
+
+        session.saveOrUpdate(student);
+    }
+
+    @Override
+    public void delete(int id) {
+        Session session = entityManager.unwrap(Session.class);
+
+        session.createQuery("delete from Student where id=:id").setParameter("id", id).executeUpdate();
+    }
 
 }

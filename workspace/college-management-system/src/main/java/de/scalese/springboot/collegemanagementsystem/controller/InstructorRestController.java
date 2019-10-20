@@ -23,6 +23,9 @@ public class InstructorRestController {
 	@Autowired
 	InstructorService instructorService;
 	
+	@Autowired
+	
+	
 	// get all instructors - findAll
 	//
 	@GetMapping("/instructors")
@@ -52,22 +55,29 @@ public class InstructorRestController {
 	// update an instructor - updateInstructor
 	//
 	@PutMapping("/instructors")
-	public Instructor updateInstructor() {
-		return null;
+	public Instructor updateInstructor(@RequestBody Instructor instructor) {
+		
+		instructorService.save(instructor);
+		
+		return instructor;
 	}
 	
 	// delete an instructor - deleteInstructor
 	//
-	@DeleteMapping("/instructor/{id}")
+	@DeleteMapping("/instructors/{id}")
 	public void deleteInstructor(@PathVariable int id) {
 		
+		instructorService.delete(id);
 	}
 	
 	// get all courses from an instructor
 	//
 	@GetMapping("/instructors/{id}/courses")
 	public List<Course> getCourses(@PathVariable int id) {
-		return null;
+		
+		Instructor instructor = instructorService.findById(id);
+		
+		return instructor != null ? instructor.getCourses() : null;
 	}
 	
 }

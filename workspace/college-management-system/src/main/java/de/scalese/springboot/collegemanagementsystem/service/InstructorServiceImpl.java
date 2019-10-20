@@ -1,13 +1,12 @@
 package de.scalese.springboot.collegemanagementsystem.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import de.scalese.springboot.collegemanagementsystem.dao.InstructorRepository;
+import de.scalese.springboot.collegemanagementsystem.entity.Instructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.scalese.springboot.collegemanagementsystem.dao.InstructorRepository;
-import de.scalese.springboot.collegemanagementsystem.entity.Instructor;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InstructorServiceImpl implements InstructorService {
@@ -26,15 +25,11 @@ public class InstructorServiceImpl implements InstructorService {
 
 		Optional<Instructor> result = instructorRepository.findById(id);
 
-		Instructor instructor = null;
-
-		if (result.isPresent()) {
-			instructor = result.get();
-		} else {
-			throw new RuntimeException("Instuctor not found with id: " + id);
+		if (!result.isPresent()) {
+			throw new RuntimeException("Did not find instructor id: " + id);
 		}
 
-		return instructor;
+		return result.get();
 	}
 
 	@Override
@@ -45,7 +40,6 @@ public class InstructorServiceImpl implements InstructorService {
 	@Override
 	public void delete(int id) {
 		instructorRepository.deleteById(id);
-
 	}
 
 }

@@ -22,10 +22,7 @@ public class InstructorRestController {
 
 	@Autowired
 	InstructorService instructorService;
-	
-	@Autowired
-	
-	
+
 	// get all instructors - findAll
 	//
 	@GetMapping("/instructors")

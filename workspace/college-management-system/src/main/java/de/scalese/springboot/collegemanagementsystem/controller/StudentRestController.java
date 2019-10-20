@@ -38,7 +38,7 @@ public class StudentRestController {
         Student student = studentService.findById(id);
 
         if (student == null) {
-            throw new RuntimeException("Student not found with id: " + id);
+            throw new RuntimeException("Did not find student id: " + id);
         }
 
         return student;

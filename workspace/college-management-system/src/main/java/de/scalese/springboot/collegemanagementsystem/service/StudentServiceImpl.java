@@ -1,14 +1,13 @@
 package de.scalese.springboot.collegemanagementsystem.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import de.scalese.springboot.collegemanagementsystem.dao.StudentRepository;
+import de.scalese.springboot.collegemanagementsystem.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.scalese.springboot.collegemanagementsystem.dao.StudentRepository;
-import de.scalese.springboot.collegemanagementsystem.entity.Student;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -22,7 +21,6 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	@Transactional
 	public List<Student> findAll() {
-
 		return studentRepository.findAll();
 	}
 
@@ -32,29 +30,22 @@ public class StudentServiceImpl implements StudentService {
 		
 		Optional<Student> result = studentRepository.findById(id);
 		
-		Student student = null;
-		
-		if (result.isPresent()) {
-			student = result.get();
-		}
-		else {
-			throw new RuntimeException("Student not found with id: " + id);
+		if (!result.isPresent()) {
+			throw new RuntimeException("Did not find student id " + id);
 		}
 	
-		return student;
+		return result.get();
 	}
 
 	@Override
 	@Transactional
 	public void save(Student student) {
-		
 		studentRepository.save(student);
 	}
 
 	@Override
 	@Transactional
 	public void delete(int id) {
-		
 		studentRepository.deleteById(id);
 	}
 }

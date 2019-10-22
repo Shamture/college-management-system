@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.scalese.springboot.collegemanagementsystem.entity.Course;
 import de.scalese.springboot.collegemanagementsystem.entity.Student;
 import de.scalese.springboot.collegemanagementsystem.service.StudentService;
 
@@ -69,12 +70,15 @@ public class StudentRestController {
     @DeleteMapping("/students/{id}")
     public void deleteStudent(@PathVariable int id) {
 
-        Student student = studentService.findById(id);
-
-        if (student == null) {
-            throw new RuntimeException("Student not found with id: " + id);
-        }
-
         studentService.delete(id);
     }
+    
+    // Get courses from a student
+    //
+    @GetMapping("students/{id}/courses") 
+    public List<Course> getCourses(@PathVariable int id) {
+       	
+    	return studentService.findById(id).getCourses();
+    }
+    
 }

@@ -45,12 +45,6 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Instructor findInstructor(int courseId) {
 
-        Optional<Course> result = courseRepository.findById(courseId);
-
-        if (!result.isPresent()) {
-            throw new RuntimeException("Did not find course id: " + courseId);
-        }
-
-        return result.get().getInstructor();
+        return this.findById(courseId).getInstructor();
     }
 }

@@ -36,11 +36,11 @@ The project idea based on a (little) college-management-system.
 
 ### Relationship Model
 
-![Database Relationship Model](https://github.com/Alex-Scalese/college-management-system/db-schema-college-management-system.png)
+![Database Relationship Model](db-schema-college-management-system.png)
 
 ### Table Schema
 
-![Table Schema](https://github.com/Alex-Scalese/college-management-system/table-schema.png)
+![Table Schema](table-schema.png)
 
 ## Setup
 

@@ -36,6 +36,12 @@ The project idea based on a (little) college-management-system.
 - courses
 - instructors
 
+## Software Architecture Overview
+
+![Software Architecture Overview](software-architecture.png)
+
+**Note:** This pattern will also be used for course and instructor entity.
+
 ## Database Overview
 
 ### Relationship Model

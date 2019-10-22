@@ -26,11 +26,15 @@ The project idea based on a (little) college-management-system.
 | PUT    |   /api/students    |    update a student    |
 | DELTE  | /api/students/{id} | delete a student by id |
 
-**Path in general**: /api/entityname/
+### Path in general
 
-**Entity names**: students, courses, instructors
+/api/entityname/
 
-**Example for relational paths** (All courses from a student): /api/students/{id}/courses
+### Entity names
+
+- students
+- courses
+- instructors
 
 ## Database Overview
 

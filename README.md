@@ -58,4 +58,8 @@ The project idea based on a (little) college-management-system.
 
 1. Import the `workspace/college-management-system/pom.xml` as Maven project in your IDE.
 2. Run the `CollegeManagementSystemApplication.java` as Java application.
-3. Create some request in Postman or curl.
+3. Create some request in Postman or curl ( `http://localhost:8080/api/instructors/` ).
+
+## Further work
+
+Implements a Front-end in React or Thymeleaf.
